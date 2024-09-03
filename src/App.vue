@@ -5,17 +5,6 @@ import { RouterView } from "vue-router";
 import "mdui/components/icon.js";
 </script>
 
-<script>
-export default {
-  components: {},
-  setup() {},
-  data() {
-    return {};
-  },
-  mounted() {}
-};
-</script>
-
 <template>
   <loginpage></loginpage>
   <!-- 登录,注册界面 -->

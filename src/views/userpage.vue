@@ -1,6 +1,8 @@
 <script setup>
 import axios from "axios";
 import Cookies from "js-cookie";
+import { useCounterStore } from "@/stores/api";
+const apiurl = useCounterStore();
 </script>
 
 <script>
@@ -29,7 +31,7 @@ export default {
     follow(type) {
       axios
         .post(
-          this.apiurl + "/trust/action?object_uid=" + this.id + "&action_type=" + type,
+          apiurl.apiurl + "/trust/action?object_uid=" + this.id + "&action_type=" + type,
           {},
           {
             headers: {
@@ -44,7 +46,7 @@ export default {
     },
     init() {
       axios
-        .get(this.apiurl + "/bocchi/user/info?user_id=" + this.id, {
+        .get(apiurl.apiurl + "/bocchi/user/info?user_id=" + this.id, {
           headers: {
             "access-token": this.access_token
           }
