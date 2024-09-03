@@ -1,6 +1,6 @@
 <script setup>
-import loginpage from "../module/login.vue";
-import homebar from "../module/homebar.vue";
+import loginpage from "../module/app/login.vue";
+import homebar from "../module/app/homebar.vue";
 import { RouterView } from "vue-router";
 import "mdui/components/icon.js";
 </script>

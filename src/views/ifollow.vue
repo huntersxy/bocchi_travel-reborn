@@ -62,8 +62,6 @@ export default {
     <div v-for="item in items" :key="item" style="display: grid; justify-content: center">
       <a-card hoverable style="width: 300px">
         <template #actions>
-          <!-- <setting-outlined key="setting" />
-        <edit-outlined key="edit" /> -->
           <div @click="applyuser(item.id)">取消关注</div>
         </template>
         <a-card-meta :title="item.name" :description="item.signature" @click="toinfo(item.id)">

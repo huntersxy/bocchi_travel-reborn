@@ -1,11 +1,11 @@
 <template>
   <mdui-navigation-bar value="" label-visibility="labeled">
-    <mdui-navigation-bar-item
+    <!-- <mdui-navigation-bar-item
       icon="place--outlined"
       value="item-1"
       @click="$router.push('/explore')"
       >探索</mdui-navigation-bar-item
-    >
+    > -->
     <mdui-navigation-bar-item icon="home--outlined" value="item-2" @click="$router.push('/')"
       >主页</mdui-navigation-bar-item
     >

@@ -19,21 +19,17 @@ export default {
       access_token: "",
       refresh_token: "",
       avatarFile: null,
-      url: "",
       showavatarpage: 0,
       previewImage: null,
-      file: null
+      file: null,
+      apiurl: ""
     };
   },
   methods: {
     follow(type) {
       axios
         .post(
-          this.url +
-            "https://api.xiey.work/bocchi/trust/action?object_uid=" +
-            this.id +
-            "&action_type=" +
-            type,
+          this.apiurl + "/trust/action?object_uid=" + this.id + "&action_type=" + type,
           {},
           {
             headers: {
@@ -48,7 +44,7 @@ export default {
     },
     init() {
       axios
-        .get(this.url + "/bocchi/user/info?user_id=" + this.id, {
+        .get(this.apiurl + "/bocchi/user/info?user_id=" + this.id, {
           headers: {
             "access-token": this.access_token
           }

@@ -2,19 +2,7 @@
 import Cookies from "js-cookie";
 import axios from "axios";
 import { CheckOutlined } from "@ant-design/icons-vue";
-/* import { ref } from "vue";
-const open = ref(false);
-const confirmLoading = ref(false);
-const showModal = () => {
-  open.value = true;
-};
-const handleOk = () => {
-  confirmLoading.value = true;
-  setTimeout(() => {
-    open.value = false;
-    confirmLoading.value = false;
-  });
-}; */
+
 import {
   HomeOutlined,
   CoffeeOutlined,
