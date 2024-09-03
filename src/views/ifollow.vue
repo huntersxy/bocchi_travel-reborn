@@ -1,8 +1,10 @@
 <script setup>
 import Cookies from "js-cookie";
 import axios from "axios";
+import { useCounterStore } from "@/stores/api";
 </script>
 <script>
+const setapiurl = useCounterStore();
 export default {
   data() {
     return {
@@ -16,7 +18,7 @@ export default {
       const token = this.access_token;
       axios
         .post(
-          "https://api.xiey.work/bocchi/trust/action?object_uid=" + i + "&action_type=0",
+          setapiurl.apiurl + "/trust/action?object_uid=" + i + "&action_type=0",
           {},
           {
             headers: {
@@ -35,7 +37,9 @@ export default {
     },
     initt() {
       axios
-        .get("/bocchi/trust/following?page_num=1&user_id=" + Number(this.$route.params.id))
+        .get(
+          setapiurl.apiurl + "/trust/following?page_num=1&user_id=" + Number(this.$route.params.id)
+        )
         .then((res) => {
           console.log(res);
           this.items = res.data.following_list;

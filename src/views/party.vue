@@ -2,7 +2,7 @@
 import Cookies from "js-cookie";
 import axios from "axios";
 import { CheckOutlined } from "@ant-design/icons-vue";
-
+import { useCounterStore } from "@/stores/api";
 import {
   HomeOutlined,
   CoffeeOutlined,
@@ -12,6 +12,7 @@ import {
 } from "@ant-design/icons-vue";
 </script>
 <script>
+const setapiurl = useCounterStore();
 export default {
   data() {
     return {
@@ -23,12 +24,9 @@ export default {
   },
   methods: {
     ToEnd() {
-      axios.get(
-        "https://api.xiey.work/bocchi/party/status?party_id=" + this.id + "&action_type=1",
-        {
-          headers: { "access-token": this.access_token }
-        }
-      );
+      axios.get(setapiurl.apiurl + "/party/status?party_id=" + this.id + "&action_type=1", {
+        headers: { "access-token": this.access_token }
+      });
       this.$router.push(`/finish/${this.id}`);
     },
     Tomember() {
@@ -45,7 +43,7 @@ export default {
     },
     apply_party() {
       axios
-        .get("/bocchi/party/apply?party_id=" + this.id, {
+        .get(setapiurl.apiurl + "/party/apply?party_id=" + this.id, {
           headers: {
             "access-token": this.access_token
           }
@@ -60,7 +58,7 @@ export default {
     },
     getin() {
       axios
-        .get("https://api.xiey.work/bocchi/party/itinerary/show?party_id=" + this.id, {
+        .get(setapiurl.apiurl + "/party/itinerary/show?party_id=" + this.id, {
           headers: {
             "access-token": this.access_token
           }
@@ -78,7 +76,7 @@ export default {
         });
     },
     partyinit() {
-      const url = "https://api.xiey.work/bocchi/party/get?party_id=" + this.id;
+      const url = setapiurl.apiurl + "/party/get?party_id=" + this.id;
       const params = {};
       axios
         .get(url, params)

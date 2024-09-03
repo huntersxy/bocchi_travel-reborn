@@ -6,7 +6,6 @@ const setapiurl = useCounterStore();
 </script>
 
 <script>
-const setapiurl = useCounterStore();
 export default {
   data() {
     return {
@@ -126,6 +125,7 @@ export default {
       this.setcount++; // 假设返回的数据中有一个名为name的字段，表示用户名。
     },
     refreshtoken() {
+      const setapiurl = useCounterStore();
       axios
         .get(setapiurl.apiurl + "/access_token/get", {
           headers: {
@@ -154,6 +154,7 @@ export default {
       window.location.href = "/";
     },
     init() {
+      const setapiurl = useCounterStore();
       setapiurl.increment;
       axios
         .get(setapiurl.apiurl + "/user/info?user_id=" + this.id, {
@@ -212,7 +213,6 @@ export default {
 };
 </script>
 <template>
-  {{ setapiurl }}
   <a-page-header
     style="border: 1px solid rgb(235, 237, 240); background-color: #fff"
     title="个人中心"
