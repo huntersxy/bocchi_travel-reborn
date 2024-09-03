@@ -3,11 +3,11 @@ import axios from "axios";
 import Cookies from "js-cookie";
 
 import "mdui/components/icon.js";
+import { useCounterStore } from "@/stores/api";
 </script>
 <script>
 export default {
   components: {},
-  setup() {},
   data() {
     return {
       apiurl: "",
@@ -42,11 +42,12 @@ export default {
 
   methods: {
     loginto() {
+      const setapiurl = useCounterStore();
       // 登录函数，需要根据后端接口进行调整
       axios
         .post(
-          this.apiurl +
-            "user/login/?username=" +
+          setapiurl.apiurl +
+            "/user/login/?username=" +
             this.username +
             "&password=" +
             this.password +
@@ -74,11 +75,12 @@ export default {
     },
 
     registerto() {
+      const setapiurl = useCounterStore();
       if (this.emailRegex.test(this.email)) {
         console.log("电子邮件格式正确");
         axios
           .post(
-            this.apiurl +
+            setapiurl.apiurl +
               "/user/register/?username=" +
               this.username +
               "&email=" +
