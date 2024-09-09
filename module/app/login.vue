@@ -21,7 +21,7 @@ export default {
       login: 1,
       resgister: 1,
       id: null,
-      userstatus: "0" // 登录状态
+      userstatus: 0 // 登录状态
     };
   },
   mounted() {
@@ -35,7 +35,7 @@ export default {
       this.userstatus = 1;
       this.getinfo();
     } else {
-      this.userstatus = 0;
+      this.userstatus = 1;
       this.getinfo();
     }
   },

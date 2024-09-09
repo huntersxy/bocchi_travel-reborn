@@ -154,7 +154,7 @@ export default defineComponent({
       </a-carousel>
     </div>
     <!--  {{ ipcity }} -->
-    <a-divider orientation="center" class="separate">附近活动</a-divider>
+    <a-divider orientation="center" class="separate">{{ this.ipcity }}-附近活动</a-divider>
 
     <div class="searchcard">
       <div v-for="item in items" :key="item">
