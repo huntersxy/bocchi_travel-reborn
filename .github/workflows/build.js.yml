@@ -26,7 +26,7 @@ jobs:
       id: cache
       with:
         path: 
-          ./web/node_modules
+          ./node_modules
         key: ${{runner.OS}}-${{hashFiles('**/web/package-lock.json')}}
           
     - name: 安装依赖
@@ -42,7 +42,6 @@ jobs:
 
     - name: 构建Cordova项目
       run: |
-          cd web
           cordova create CordovaProject work.xiey.build bcbcbc
           cd CordovaProject
           cordova platform add android
@@ -52,15 +51,15 @@ jobs:
 
     - name: build Blog
       run: | 
-            cd web
+           
             npm run build
 
 
 
     - name: 配置设置
       run: |
-          mv config.xml web/CordovaProject/config.xml
-          cd web/CordovaProject/
+          mv config.xml CordovaProject/config.xml
+          cd CordovaProject/
           cordova build android
           
 
@@ -68,7 +67,7 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
           name: app-dev
-          path: web/CordovaProject/platforms/android/app/build/outputs/apk/debug/app-debug.apk
+          path: CordovaProject/platforms/android/app/build/outputs/apk/debug/app-debug.apk
     - name: Deploy to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@4.1.2
       with:
@@ -82,6 +81,6 @@ jobs:
         server: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: ./web/CordovaProject/www/
+        local-dir: ./CordovaProject/www/
         server-dir: ./
         log-level: verbose
