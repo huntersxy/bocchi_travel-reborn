@@ -27,7 +27,7 @@ jobs:
       with:
         path: 
           ./node_modules
-        key: ${{runner.OS}}-${{hashFiles('**/web/package-lock.json')}}
+        key: ${{runner.OS}}-${{hashFiles('**/package-lock.json')}}
           
     - name: 安装依赖
       if: steps.cache.outputs.cache-hit != 'true'
@@ -72,7 +72,7 @@ jobs:
       uses: JamesIves/github-pages-deploy-action@4.1.2
       with:
         branch: gh-pages  # 部署到 gh-pages 分支
-        folder: web/CordovaProject/www  # 构建输出的目录
+        folder: CordovaProject/www  # 构建输出的目录
 
     - name: 📂 Sync files
       if: github.repository != 'FantasyRL/bocchi-the-travel'
